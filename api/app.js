@@ -23,7 +23,7 @@ app.post('/audio-options', async (req, res) => {
                 thumbnailUrl: info.videoDetails.thumbnails[0].url
             }));
 
-        return res.json({ audioOptions });
+        return res.json( audioOptions );
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -48,7 +48,7 @@ app.post('/video-options', async (req, res) => {
                 thumbnailUrl: info.videoDetails.thumbnails[0].url
             }));
 
-        return res.json({ videoOptions });
+        return res.json( videoOptions );
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
