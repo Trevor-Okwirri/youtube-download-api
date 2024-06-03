@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from pytube import YouTube
-import urllib.parse
 
 app = Flask(__name__)
 
