@@ -52,6 +52,7 @@ app.post('/video-options', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log('Server running on port 3000');
 });
+module.exports = app;
