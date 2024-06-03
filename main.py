@@ -32,6 +32,7 @@ async def audio_options(request: URLRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/video-options")
 async def video_options(request: URLRequest):
     url = request.url

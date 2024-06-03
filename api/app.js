@@ -19,10 +19,11 @@ app.post('/audio-options', async (req, res) => {
             .map(format => ({
                 quality: format.audioBitrate ? `${format.audioBitrate}kbps` : 'Unknown',
                 downloadUrl: format.url,
-                videoId: info.videoDetails.videoId
+                videoId: info.videoDetails.videoId,
+                thumbnailUrl: info.videoDetails.thumbnails[0].url
             }));
 
-        return res.json({ thumbnailUrl: info.videoDetails.thumbnails[0].url, audioOptions });
+        return res.json({ audioOptions });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -43,14 +44,16 @@ app.post('/video-options', async (req, res) => {
                 quality: format.qualityLabel || 'Unknown',
                 type: 'mp4',
                 downloadUrl: format.url,
-                videoId: info.videoDetails.videoId
+                videoId: info.videoDetails.videoId, 
+                thumbnailUrl: info.videoDetails.thumbnails[0].url
             }));
 
-        return res.json({ thumbnailUrl: info.videoDetails.thumbnails[0].url, videoOptions });
+        return res.json({ videoOptions });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-});
+})
+;
 
 app.listen(5000, () => {
     console.log('Server running on port 3000');
