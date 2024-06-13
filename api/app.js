@@ -67,4 +67,4 @@ app.listen(5000, () => {
     console.log('Server running on port 5000');
 });
 
-module.exports = app; I want to also get size of file
+module.exports = app;
