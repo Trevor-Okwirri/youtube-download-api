@@ -19,6 +19,7 @@ app.post('/audio-options', async (req, res) => {
             .map(format => ({
                 quality: format.audioBitrate ? `${format.audioBitrate}kbps` : 'Unknown',
                 downloadUrl: format.url,
+                type: 'mp3',
                 size: `${(format.contentLength / 1048576).toFixed(2)} MB`, // Convert bytes to MB and round to 2 decimal places, then add " MB"
                 videoId: info.videoDetails.videoId
             }));
