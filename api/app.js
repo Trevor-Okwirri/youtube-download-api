@@ -62,3 +62,9 @@ app.post('/video-options', async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
+app.listen(5000, () => {
+    console.log('Server running on port 5000');
+});
+
+module.exports = app; I want to also get size of file
