@@ -19,11 +19,10 @@ app.post('/audio-options', async (req, res) => {
             .map(format => ({
                 quality: format.audioBitrate ? `${format.audioBitrate}kbps` : 'Unknown',
                 downloadUrl: format.url,
-                videoId: info.videoDetails.videoId,
-                thumbnailUrl: info.videoDetails.thumbnails[0].url
+                videoId: info.videoDetails.videoId
             }));
 
-        return res.json( audioOptions );
+        return res.json({thumbnailUrl: info.videoDetails.thumbnails[0].url, audioOptions });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -44,11 +43,10 @@ app.post('/video-options', async (req, res) => {
                 quality: format.qualityLabel || 'Unknown',
                 type: 'mp4',
                 downloadUrl: format.url,
-                videoId: info.videoDetails.videoId, 
-                thumbnailUrl: info.videoDetails.thumbnails[0].url
+                videoId: info.videoDetails.videoId
             }));
 
-        return res.json( videoOptions );
+        return res.json({thumbnailUrl: info.videoDetails.thumbnails[0].url, videoOptions });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
