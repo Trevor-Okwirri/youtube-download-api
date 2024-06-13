@@ -1,3 +1,11 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const { getInfo } = require('ytdl-core');
+
+const app = express();
+app.use(bodyParser.json());
+
+
 app.post('/audio-options', async (req, res) => {
     const url = req.body.url;
 
