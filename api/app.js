@@ -1,10 +1,3 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { getInfo } = require('ytdl-core');
-
-const app = express();
-app.use(bodyParser.json());
-
 app.post('/audio-options', async (req, res) => {
     const url = req.body.url;
 
@@ -19,6 +12,7 @@ app.post('/audio-options', async (req, res) => {
             .map(format => ({
                 quality: format.audioBitrate ? `${format.audioBitrate}kbps` : 'Unknown',
                 downloadUrl: format.url,
+                size: format.contentLength,
                 videoId: info.videoDetails.videoId
             }));
 
@@ -47,6 +41,7 @@ app.post('/video-options', async (req, res) => {
                 quality: format.qualityLabel || 'Unknown',
                 type: 'mp4',
                 downloadUrl: format.url,
+                size: format.contentLength,
                 videoId: info.videoDetails.videoId
             }));
 
@@ -59,9 +54,3 @@ app.post('/video-options', async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
-
-app.listen(5000, () => {
-    console.log('Server running on port 5000');
-});
-
-module.exports = app;
