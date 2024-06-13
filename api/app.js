@@ -20,6 +20,7 @@ app.post('/audio-options', async (req, res) => {
             .map(format => ({
                 quality: format.audioBitrate ? `${format.audioBitrate}kbps` : 'Unknown',
                 downloadUrl: format.url,
+                type: 'mp3',
                 size: format.contentLength,
                 videoId: info.videoDetails.videoId
             }));
