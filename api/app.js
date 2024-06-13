@@ -22,7 +22,11 @@ app.post('/audio-options', async (req, res) => {
                 videoId: info.videoDetails.videoId
             }));
 
-        return res.json({thumbnailUrl: info.videoDetails.thumbnails[0].url, audioOptions });
+        return res.json({
+            videoName: info.videoDetails.title,
+            thumbnailUrl: info.videoDetails.thumbnails[0].url,
+            audioOptions
+        });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -46,14 +50,18 @@ app.post('/video-options', async (req, res) => {
                 videoId: info.videoDetails.videoId
             }));
 
-        return res.json({thumbnailUrl: info.videoDetails.thumbnails[0].url, videoOptions });
+        return res.json({
+            videoName: info.videoDetails.title,
+            thumbnailUrl: info.videoDetails.thumbnails[0].url,
+            videoOptions
+        });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-})
-;
+});
 
 app.listen(5000, () => {
-    console.log('Server running on port 3000');
+    console.log('Server running on port 5000');
 });
+
 module.exports = app;
